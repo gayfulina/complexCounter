@@ -22,25 +22,27 @@ const ComplexCounterController = (props) => {
     return (
         <div>
 
-                <label>Initial Value</label>
-                <input type="number"
-                    value={inputValue}
-                    onChange={inputValueHandler}
-                    placeholder="Put the Value"
-                    />
-                <br/>
+            <label className="mr-3">Initial Value</label>
+            <input type="number"
+                   className="form-control"
+                   value={inputValue}
+                   onChange={inputValueHandler}
+                   placeholder="Put the Value"
+            />
+            <br/>
 
-                <label>Number of Buttons</label>
+                <label className="mr-3">Number of Buttons</label>
                 <input type="number"
+                       className="form-control"
                        value={inputNumberOfButtons}
                        onChange={inputNumberOFButtonsHandler}
                        placeholder="Number of Buttons"
                 />
                 <br/>
-                <button onClick={addButtonHandler}>
+                <button className="btn btn-outline-secondary"
+                        onClick={addButtonHandler}>
                     Add New Counter
                 </button>
-
         </div>
     )
 }

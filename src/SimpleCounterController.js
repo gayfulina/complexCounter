@@ -4,16 +4,32 @@ import './App.css';
 const SimpleCounterController = (props) => {
 
     return (
-        <div className="simple-counter">
+        <div>
             {props.counters.map(el =>
                 <div key={el.id}>
                     {el.numberOfButtons.map(elem =>
-                        <button onClick={() => props.counterChangeValue(el.id, -elem)}>{-elem}</button>).reverse()}
-                    <span>
+                        <button className="button-count"
+                                onClick={() => props.counterChangeValue(el.id, -elem)}>{-elem}</button>).reverse()}
+
+                    <span className=" simple-counter-result p-2">
                        {el.count}
-                   </span>
+                    </span>
+
                     {el.numberOfButtons.map(elem =>
-                        <button onClick={() => props.counterChangeValue(el.id, elem)}>{elem}</button>)}
+                        <button className="button-count"
+                                onClick={() => props.counterChangeValue(el.id, elem)}>{elem}</button>)}
+
+                    <button className="btn btn-outline-danger mx-3">
+                        Delete Counter
+                    </button>
+
+                    <button className="btn btn-outline-secondary mx-3">
+                        ↑
+                    </button>
+
+                    <button className="btn btn-outline-secondary mx-3">
+                        ↓
+                    </button>
                 </div>
             )}
         < /div>
