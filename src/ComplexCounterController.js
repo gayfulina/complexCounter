@@ -27,7 +27,7 @@ const ComplexCounterController = (props) => {
                    className="form-control"
                    value={inputValue}
                    onChange={inputValueHandler}
-                   placeholder="Put the Value"
+                   placeholder="Add the Value"
             />
             <br/>
 

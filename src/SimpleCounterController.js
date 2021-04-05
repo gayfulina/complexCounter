@@ -5,27 +5,45 @@ const SimpleCounterController = (props) => {
 
     return (
         <div>
-            {props.counters.map(el =>
-                <div key={el.id}>
-                    {el.numberOfButtons.map(elem =>
-                        <button className="button-count"
-                                onClick={() => props.counterChangeValue(el.id, -elem)}>{-elem}</button>).reverse()}
+            <div className="simple-counter container py-5 m-5">
+                <div className="row d-flex justify-content-center">
+                    <div className="col-s-4">
+                        <h1> COUNTER </h1>
 
-                    <span className=" simple-counter-result p-2">
-                       {el.count}
-                    </span>
+                        {props.counters.map(el =>
+                                <div key={el.id}>
 
-                    {el.numberOfButtons.map(elem =>
-                        <button className="button-count"
-                                onClick={() => props.counterChangeValue(el.id, elem)}>{elem}
-                        </button>)}
+                                    <div className="m-3">
+                                    {el.numberOfButtons.map(elem =>
+                                        <button className="button-count"
+                                                onClick={() => props.counterChangeValue(el.id, -elem)}>{-elem}
+                                        </button>).reverse()}
 
-                    <button className="btn btn-outline-danger mx-3" onClick={() => props.deleteCounter(el.id)}>Delete Counter</button>
-                    <button className="btn btn-outline-secondary mx-3" onClick={() => props.buttonUp}>↑</button>
-                    <button className="btn btn-outline-secondary mx-3" onClick={() => props.buttonDown}>↓</button>
+                                    <span className=" simple-counter-result p-2">{el.count}</span>
+
+                                    {el.numberOfButtons.map(elem =>
+                                        <button className="button-count"
+                                                onClick={() => props.counterChangeValue(el.id, elem)}>{elem}
+                                        </button>)}
+                                    </div>
+
+                                    <button className="btn btn-outline-danger mx-3"
+                                            onClick={() => props.deleteCounter(el.id)}>Delete Counter
+                                    </button>
+                                    <button className="btn btn-outline-secondary mx-3"
+                                            disabled={props.index === 0}
+                                            onClick={() => props.swapButton(props.index, props.index - 1)}>⬆
+                                    </button>
+                                    <button className="btn btn-outline-secondary mx-3"
+                                            disabled={props.isLast}
+                                            onClick={() => props.swapButton(props.index, props.index + 1)}>⬇
+                                    </button>
+                                </div>
+                        )}
+                    < /div>
                 </div>
-            )}
-        < /div>
+            </div>
+        </div>
     )
 }
 

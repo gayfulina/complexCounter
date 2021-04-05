@@ -5,7 +5,7 @@ import ComplexCounterController from "./ComplexCounterController";
 import SimpleCounterController from "./SimpleCounterController";
 
 const initCounters = [
-    {id: Math.random(), count: 0, numberOfButtons: [1, 2, 3]},
+    {id: Math.random(), count: 0, numberOfButtons: [1,2,3,4,5,6,7,8,9]},
 ]
 
 function App() {
@@ -34,20 +34,12 @@ function App() {
         setCounters(counters.map(el => el.id === id ? {...el, count: el.count + val} : el));
     }
 
-    const buttonUp = (index) => {
-        const buttonUpCopy = [...counters];
-        const newButtonUpCopy = buttonUpCopy[index];
-        buttonUpCopy[index] = buttonUpCopy[index - 1];
-        buttonUpCopy[index - 1] = newButtonUpCopy;
-        setCounters(buttonUpCopy);
-    }
-
-    const buttonDown = (index) => {
-        const buttonDownCopy = [...counters];
-        const newButtonDownCopy = buttonDownCopy[index];
-        buttonDownCopy[index] = buttonDownCopy[index + 1];
-        buttonDownCopy[index + 1] = newButtonDownCopy;
-        setCounters(buttonDownCopy);
+    const swapButton = (currentIndex, nextIndex) => {
+        const newList = [...counters];
+        const currentEl = newList[currentIndex];
+        newList[currentIndex] = newList[nextIndex];
+        newList[nextIndex] = currentEl;
+        setCounters(newList)
     }
 
     const resetButton = () => {
@@ -57,23 +49,20 @@ function App() {
 
     return (
         <div>
-            <div className="simple-counter container py-5 m-5">
-                <div className="row d-flex justify-content-center">
-                    <div className="col-md-6">
-                        <h1> COUNTER </h1>
-                        <SimpleCounterController counters={counters}
-                                                 counterChangeValue={counterChangeValue}
-                                                 deleteCounter={deleteCounter}
-                                                 buttonUp={buttonUp}
-                                                 buttonDown={buttonDown}
-                        />
-                    </div>
-                </div>
-            </div>
+                        {counters.map((el, index) => <SimpleCounterController
+                                counters={counters}
+                                index={index}
+                                isLast={index === counters.length - 1}
+                                counterChangeValue={counterChangeValue}
+                                deleteCounter={deleteCounter}
+                                swapButton={swapButton}
+                            />
+                        )
+                        }
 
             <div className="container m-5">
                 <div className="row d-flex justify-content-center">
-                    <div className="col-md-6">
+                    <div className="col-s-6">
                         <ComplexCounterController addCounter={addCounter}
                                                   resetButton={resetButton}
                         />
