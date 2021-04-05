@@ -50,15 +50,13 @@ function App() {
     return (
         <div>
                         {counters.map((el, index) => <SimpleCounterController
-                                counters={counters}
+                                counter={el}
                                 index={index}
                                 isLast={index === counters.length - 1}
                                 counterChangeValue={counterChangeValue}
                                 deleteCounter={deleteCounter}
                                 swapButton={swapButton}
-                            />
-                        )
-                        }
+                            />)}
 
             <div className="container m-5">
                 <div className="row d-flex justify-content-center">
