@@ -19,6 +19,16 @@
     color: lavender;
     background: olive;
     border: 1px solid lavender;
-    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
     border-radius: 5px;
+}
+
+.button-add_new-counter {
+    font-weight: bold;
+    color: lavender;
+    background: olive;
+    border: 1px solid lavender;
+    padding: 7px;
+    border-radius: 7px;
 }

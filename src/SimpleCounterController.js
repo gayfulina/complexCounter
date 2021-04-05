@@ -17,19 +17,12 @@ const SimpleCounterController = (props) => {
 
                     {el.numberOfButtons.map(elem =>
                         <button className="button-count"
-                                onClick={() => props.counterChangeValue(el.id, elem)}>{elem}</button>)}
+                                onClick={() => props.counterChangeValue(el.id, elem)}>{elem}
+                        </button>)}
 
-                    <button className="btn btn-outline-danger mx-3">
-                        Delete Counter
-                    </button>
-
-                    <button className="btn btn-outline-secondary mx-3">
-                        ↑
-                    </button>
-
-                    <button className="btn btn-outline-secondary mx-3">
-                        ↓
-                    </button>
+                    <button className="btn btn-outline-danger mx-3" onClick={() => props.deleteCounter(el.id)}>Delete Counter</button>
+                    <button className="btn btn-outline-secondary mx-3" onClick={() => props.buttonUp}>↑</button>
+                    <button className="btn btn-outline-secondary mx-3" onClick={() => props.buttonDown}>↓</button>
                 </div>
             )}
         < /div>
